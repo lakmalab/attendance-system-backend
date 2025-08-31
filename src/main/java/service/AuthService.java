@@ -7,6 +7,6 @@ import model.entities.User;
 
 import java.util.Optional;
 
-public interface UserService {
+public interface AuthService {
     UserDto login(UserDto user);
 }
