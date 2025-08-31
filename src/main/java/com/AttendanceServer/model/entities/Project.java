@@ -1,6 +1,5 @@
-package model.entities;
+package com.AttendanceServer.model.entities;
 
-import com.AttendanceServer.dto.ProjectDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

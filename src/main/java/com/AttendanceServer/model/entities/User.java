@@ -1,10 +1,10 @@
-package model.entities;
+package com.AttendanceServer.model.entities;
 
 
-import enums.UserRole;
+import com.AttendanceServer.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
-import model.dto.UserDto;
+import com.AttendanceServer.model.dto.UserDto;
 
 @Entity
 @Data

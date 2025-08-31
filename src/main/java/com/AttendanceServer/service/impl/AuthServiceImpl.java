@@ -1,13 +1,13 @@
-package service.impl;
+package com.AttendanceServer.service.impl;
 
-import enums.UserRole;
+import com.AttendanceServer.enums.UserRole;
 import jakarta.annotation.PostConstruct;
-import model.dto.UserDto;
-import model.entities.User;
+import com.AttendanceServer.model.dto.UserDto;
+import com.AttendanceServer.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
-import service.AuthService;
+import com.AttendanceServer.repository.UserRepository;
+import com.AttendanceServer.service.AuthService;
 
 import java.util.Optional;
 

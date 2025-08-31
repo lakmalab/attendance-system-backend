@@ -1,4 +1,4 @@
-package model.dto;
+package com.AttendanceServer.model.dto;
 
 
 import lombok.Data;

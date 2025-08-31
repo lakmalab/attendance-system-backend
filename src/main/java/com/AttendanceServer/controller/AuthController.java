@@ -1,11 +1,11 @@
-package controller;
+package com.AttendanceServer.controller;
 
-import model.dto.UserDto;
+import com.AttendanceServer.model.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.AuthService;
+import com.AttendanceServer.service.AuthService;
 
 @RestController
 @RequestMapping("api/auth")

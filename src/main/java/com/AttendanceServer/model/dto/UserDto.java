@@ -1,6 +1,6 @@
-package model.dto;
+package com.AttendanceServer.model.dto;
 
-import enums.UserRole;
+import com.AttendanceServer.enums.UserRole;
 import lombok.Data;
 
 @Data
