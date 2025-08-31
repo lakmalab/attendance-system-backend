@@ -1,5 +1,7 @@
 package model.dto;
 
+import enums.UserRole;
+
 public class UserDto {
 
     private long id;
@@ -10,7 +12,7 @@ public class UserDto {
 
     private String name;
 
-
+    private UserRole userRole;
 
     private Long projectId;
 
