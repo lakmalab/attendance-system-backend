@@ -1,7 +1,9 @@
 package model.dto;
 
 import enums.UserRole;
+import lombok.Data;
 
+@Data
 public class UserDto {
 
     private long id;

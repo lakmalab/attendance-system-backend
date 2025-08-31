@@ -4,6 +4,7 @@ package model.entities;
 import enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
+import model.dto.UserDto;
 
 @Entity
 @Data
@@ -26,6 +27,18 @@ public class User {
     private Project project;
 
 
+    public UserDto getDto() {
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setName(name);
+        userDto.setUserRole(userRole);
+        userDto.setEmail(email);
 
+        if(project != null){
+            userDto.setProjectId(project.getId());
+            userDto.setName(project.getName());
+        }
 
+        return userDto;
+    }
 }
