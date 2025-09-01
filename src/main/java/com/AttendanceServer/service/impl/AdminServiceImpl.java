@@ -6,6 +6,7 @@ import com.AttendanceServer.model.entities.Project;
 import com.AttendanceServer.model.entities.User;
 import com.AttendanceServer.repository.ProjectRepository;
 import com.AttendanceServer.repository.UserRepository;
+import com.AttendanceServer.service.AdminService;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class AdminServiceImpl {
+public class AdminServiceImpl implements AdminService {
     @Autowired
     private UserRepository userRepository;
 
