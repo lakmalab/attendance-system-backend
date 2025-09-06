@@ -9,19 +9,18 @@ import com.AttendanceServer.repository.UserRepository;
 import com.AttendanceServer.service.AdminService;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@RequiredArgsConstructor
 @Service
 public class AdminServiceImpl implements AdminService {
-    @Autowired
-    private UserRepository userRepository;
 
-    @Autowired
+    private final UserRepository userRepository;
     private ProjectRepository projectRepository;
 
     public UserDto createUser(UserDto dto){

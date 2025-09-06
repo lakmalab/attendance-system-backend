@@ -4,18 +4,22 @@ import com.AttendanceServer.model.dto.UserDto;
 import com.AttendanceServer.service.AdminService;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/admin")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class AdminController {
-    @Autowired
+
     private AdminService adminService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create-user")
     public ResponseEntity<?> signupUser(@RequestBody UserDto dto){
         try {
@@ -28,6 +32,7 @@ public class AdminController {
         }
 
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/managers")
     public ResponseEntity<?> getAllManagers(){
         try {
@@ -36,6 +41,7 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/employees")
     public ResponseEntity<?> getAllEmployees(){
         try {

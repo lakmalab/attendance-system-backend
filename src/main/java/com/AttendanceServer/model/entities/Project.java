@@ -1,5 +1,6 @@
 package com.AttendanceServer.model.entities;
 
+import com.AttendanceServer.model.dto.ProjectDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,4 +25,12 @@ public class Project {
     private Date startDate;
 
 
+    public Object getDto() {
+        ProjectDTO dto = new ProjectDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setDuration(duration);
+        dto.setStartDate(startDate);
+        return dto;
+    }
 }

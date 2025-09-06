@@ -4,18 +4,19 @@ import com.AttendanceServer.enums.UserRole;
 import jakarta.annotation.PostConstruct;
 import com.AttendanceServer.model.dto.UserDto;
 import com.AttendanceServer.model.entities.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.AttendanceServer.repository.UserRepository;
 import com.AttendanceServer.service.AuthService;
 
 import java.util.Optional;
-
+@RequiredArgsConstructor
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     @PostConstruct
     private void createAdminUser(){
