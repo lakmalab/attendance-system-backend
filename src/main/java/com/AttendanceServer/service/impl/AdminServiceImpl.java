@@ -11,6 +11,7 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,8 @@ import java.util.stream.Collectors;
 public class AdminServiceImpl implements AdminService {
 
     private final UserRepository userRepository;
-    private ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserDto createUser(UserDto dto){
         boolean exists = userRepository.findByEmail(dto.getEmail()).isPresent();
@@ -32,7 +34,7 @@ public class AdminServiceImpl implements AdminService {
         if (optionalProject.isPresent()){
             User user = new User();
             user.setUserRole(dto.getUserRole());
-            user.setPassword(dto.getPassword());
+            user.setPassword(passwordEncoder.encode(dto.getPassword()));
             user.setEmail(dto.getEmail());
             user.setName(dto.getName());
             user.setProject(optionalProject.get());

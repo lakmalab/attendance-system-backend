@@ -6,6 +6,7 @@ import com.AttendanceServer.model.dto.UserDto;
 import com.AttendanceServer.model.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.AttendanceServer.repository.UserRepository;
 import com.AttendanceServer.service.AuthService;
@@ -17,6 +18,7 @@ public class AuthServiceImpl implements AuthService {
 
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     private void createAdminUser(){
@@ -28,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
             user.setName("Admin");
             user.setEmail("admin@gmail.com");
             user.setUserRole(UserRole.ADMIN);
-            user.setPassword("admin");
+            user.setPassword(passwordEncoder.encode("admin"));
 
             userRepository.save(user);
             System.out.println("Admin User Created");
@@ -40,8 +42,7 @@ public class AuthServiceImpl implements AuthService {
     public UserDto login(UserDto user){
 
         Optional<User> dbUser = userRepository.findByEmail(user.getEmail());
-
-        if (dbUser.isPresent() && user.getPassword().equals(dbUser.get().getPassword())){
+        if (dbUser.isPresent() && passwordEncoder.matches(user.getPassword(), dbUser.get().getPassword())){
             return dbUser.get().getDto();
 
         }
