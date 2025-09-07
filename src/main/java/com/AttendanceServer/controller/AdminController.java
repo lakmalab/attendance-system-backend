@@ -19,7 +19,7 @@ public class AdminController {
 
     private AdminService adminService;
 
-    @PreAuthorize("hasRole('ADMIN')")
+  //  @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create-user")
     public ResponseEntity<?> signupUser(@RequestBody UserDto dto){
         try {
