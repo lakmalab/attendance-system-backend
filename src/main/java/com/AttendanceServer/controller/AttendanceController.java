@@ -2,7 +2,6 @@ package com.AttendanceServer.controller;
 
 import com.AttendanceServer.model.dto.AttendanceDTO;
 import com.AttendanceServer.model.dto.LeaveRequestDto;
-import com.AttendanceServer.model.dto.UserDto;
 import com.AttendanceServer.service.AttendanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,6 +35,14 @@ public class AttendanceController {
                 return new ResponseEntity<>("Wrong Conditional", HttpStatus.UNAUTHORIZED);
             }
             return new ResponseEntity<>(leaveRequestDto, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @GetMapping("/leaves/employee/{id}")
+    public ResponseEntity<?> getAllEmployeeLeave (@PathVariable Long id){
+        try {
+          return ResponseEntity.ok(attendanceService.getAllEmployeeLeave(id));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

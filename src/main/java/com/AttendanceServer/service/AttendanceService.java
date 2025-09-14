@@ -13,5 +13,5 @@ import java.util.List;
 public interface AttendanceService {
      AttendanceDTO markAttendance(AttendanceDTO dto);
      LeaveRequestDto applyLeave(LeaveRequestDto dto) ;
-
+      List<LeaveRequestDto> getAllEmployeeLeave(Long id) ;
 }
