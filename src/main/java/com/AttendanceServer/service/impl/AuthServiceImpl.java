@@ -10,8 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.AttendanceServer.repository.UserRepository;
 import com.AttendanceServer.service.AuthService;
-
 import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -38,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
             System.out.println("Admin User Already Exit");
         }
     }
-
+    @Override
     public UserDto login(UserDto user){
 
         Optional<User> dbUser = userRepository.findByEmail(user.getEmail());

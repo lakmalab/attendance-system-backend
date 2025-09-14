@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private AdminService adminService;
+    private final AdminService adminService;
 
   //  @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create-user")
@@ -28,7 +28,8 @@ public class AdminController {
         }catch (EntityExistsException | EntityNotFoundException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }catch (Exception e){
-            return new ResponseEntity<>("User not Created, Come again latter", HttpStatus.NOT_ACCEPTABLE);
+            e.printStackTrace(); // 👈 log actual error
+            return new ResponseEntity<>("User not Created, Come again later", HttpStatus.NOT_ACCEPTABLE);
         }
 
     }
